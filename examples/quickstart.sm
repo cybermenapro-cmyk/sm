@@ -1,0 +1,51 @@
+# SM Beta 0.1 - first storage workflow
+PROGRAM "SM Beta Quickstart"
+
+VAR owner = "Saiko"
+VAR capacity = 512 GB
+VAR active = TRUE
+
+LIST mixed = ["alpha", 15, TRUE, 128 MB]
+ARRAY blocks = ARRAY(3)
+SET blocks[0] = 64 MB
+SET blocks[1] = 128 MB
+SET blocks[2] = 256 MB
+
+OBJECT profile = {"owner": "Saiko", "active": TRUE, "capacity": 512 GB}
+
+SHOW owner
+SHOW capacity
+SHOW mixed[0]
+SHOW blocks[1]
+SHOW profile.owner
+
+DIRECTORY CREATE "documents"
+FILE WRITE "documents/hello.txt" "Hello from SM Beta"
+FILE APPEND "documents/hello.txt" " - storage language"
+FILE READ "documents/hello.txt"
+
+COPY "documents/hello.txt" TO "documents/hello-copy.txt"
+VERIFY "documents/hello.txt" AGAINST "documents/hello-copy.txt" WITH SHA256
+
+QUOTA CHECK "documents" LIMIT 1 MB
+DEVICE LIST
+
+DATA TEMP session_cache
+    VAR note = "temporary data"
+    VAR retry_count = 3
+END_DATA
+
+DATA PERSIST project_info
+    VAR language = "SM"
+    VAR version = 1
+    VAR capacity = 2 GB
+END_DATA
+SAVE project_info
+
+PLAN "create-report"
+    FILE WRITE "documents/report.txt" "Prepared by an SM plan"
+END_PLAN
+# Uncomment the next line to apply the reviewed plan interactively.
+# APPLY "create-report"
+
+END

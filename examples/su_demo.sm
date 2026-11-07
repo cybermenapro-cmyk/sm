@@ -1,0 +1,14 @@
+PROGRAM "SU Scope Demo"
+
+# Beta records the permission request but does not escalate host privileges.
+SU OPERATION DEVICE LIST
+
+SU BLOCK
+    DEVICE LIST
+END_SU
+
+SU SESSION
+    SHOW "A session-scoped permission request was recorded."
+END_SU
+
+END

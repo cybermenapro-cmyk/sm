@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sm-storage-language"
+version = "0.1.0b1"
+description = "SM (Storage Management), an interpreted language for storage and data workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "SM Language contributors" }]
+keywords = ["storage", "language", "interpreter", "filesystem", "data-management"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: System :: Filesystems",
+  "Topic :: Software Development :: Interpreters",
+]
+
+[project.scripts]
+sm = "sm:main"
+
+[tool.setuptools]
+py-modules = ["sm"]
